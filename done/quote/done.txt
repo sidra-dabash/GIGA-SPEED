@@ -1,0 +1,105 @@
+في هذا القسم، نرى أن الكود يركز على عرض اقتباس أو شهادة (testimonial) من عميل أو مستخدم مع عرض الأيقونة والنصوص ذات الصلة بطريقة مرتبة ومنظمة. إليك الشرح الاحترافي لتفاصيل الكود مع التصميم المرفق:
+
+ تحليل الكود:
+
+ 1. عنصر الـ <blockquote>:
+   - الوصف: العنصر الرئيسي الذي يحتوي على الاقتباس، وهو مخصص لعرض المحتويات النصية المنقولة أو المقتبسة. تم استخدام هذا العنصر لعرض النص الوصفي الذي يمثل رأي أو تعليق العميل.
+   - التصميم: في الصورة، نلاحظ أن نص الاقتباس مكتوب بخط مائل (italic) وبحجم مناسب يجعله بارزاً، مما يعطي إحساسًا بأنه جزء مقتبس.
+
+ 2. الـ .quote__text:
+   - الوصف: هذا الكلاس يحتوي على النص الفعلي للاقتباس. يتم استخدام الفقرات <p> لتنظيم النص داخل الـ blockquote.
+   - التصميم: النص يظهر بخط مائل، وهو ميزة تستخدم عادة في تصميمات الاقتباسات، مما يساعد في إبراز النص وتفريقه عن النصوص الأخرى.
+
+ 3. الـ <footer>:
+   - الوصف: العنصر الذي يحتوي على معلومات الشخص الذي قدم الاقتباس. تم وضع الاسم واسم الشركة داخل هذا العنصر.
+   - التصميم: يعرض الاسم بخط عريض، بينما يتم عرض اسم الشركة بخط أقل سمكاً وبحجم أصغر لتوضيح التسلسل الهرمي في المعلومات.
+
+ 4. الـ .media:
+   - الوصف: نفس نمط الـ media object الذي تم استخدامه في الأقسام السابقة، حيث يتم عرض الأيقونة في اليسار والنص في اليمين باستخدام Flexbox. هنا يتم استخدامه لعرض اسم الشخص واسم الشركة.
+   - التصميم: يتيح الـ media object ترتيب الأيقونة والنص بجانب بعضها البعض بشكل متناسق، كما نرى في الصورة المرفقة.
+
+ 5. الـ .media__img:
+   - الوصف: يحتوي على الأيقونة الخاصة بالعنصر، والتي تمثل خطًا تحت الاسم، مما يضيف لمسة تصميمية أنيقة تحت الاسم.
+   - التصميم: يتم استخدام أيقونة SVG هنا لتمثيل خط بسيط تحت الاسم، وهو خط أزرق فاتح يضيف تأثيراً مرئياً خفيفًا.
+
+ 6. الـ .media__body:
+   - الوصف: يحتوي على النصوص المتعلقة باسم الشخص والشركة. الاسم مكتوب بتنسيق العنوان <h3>، بينما اسم الشركة مكتوب بتنسيق الفقرة <p>.
+   - التصميم: الاسم بارز ويأتي بلون داكن أكثر (أزرق غامق) بينما اسم الشركة يأتي بلون رمادي فاتح، مما يوضح الفرق بين النصين ويساهم في تحسين قراءة المحتوى.
+
+
+
+ كيف يتماشى مع التصميم فيجما:
+
+التصميم هنا متماسك وبسيط، ويتيح عرض الاقتباس مع اسم الشخص واسم الشركة بطريقة أنيقة. التنسيق يعتمد على المسافات بين العناصر والاختلاف بين الألوان والخطوط لجعل النصوص أكثر وضوحاً وسهولة في القراءة.
+
+
+
+
+/* quote */
+
+/* .quote {
+  font-size: 3rem;
+  font-style: italic;
+  color: var(--color-body-darker);
+  line-height: 1.3;
+} */
+.quote__text {
+  font-size: 3rem;
+  font-style: italic;
+  color: var(--color-body-darker);
+  line-height: 1.3;
+}
+.quote__text::before {
+  content: open-quote;
+}
+
+.quote__text::after {
+  content: close-quote;
+}
+
+.quote .media__title {
+  font-size: 3rem;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0px;
+}
+
+.quote .media__organization {
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@media screen and (min-width: 1024px) {
+  .quote {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+}
+
+
+
+
+<blockquote class="quote">
+  <p class="quote__text">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur
+    molestiae velit voluptate eligendi, explicabo eos recusandae ipsa magni
+    impedit itaque cupiditate fugit ea, veniam similique illum nulla perferendis
+    error repellendus?
+  </p>
+  <footer>
+    <div class="media">
+      <div class="media__img">
+        <span class="icon--container">
+          <svg class="icon icon--primary">
+            <use xlink:href="images/sprites.svg#line"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="media__body">
+        <h3 class="media__title">john smith</h3>
+        <p class="media__organization">ABC Company</p>
+      </div>
+    </div>
+  </footer>
+</blockquote>
